@@ -1,83 +1,76 @@
+import Image from "next/image";
+
 const industries = [
   {
     title: "Semiconductor",
-    description:
-      "Advanced engineering and integration solutions for semiconductor manufacturing facilities.",
+    image: "/industries/semiconductor.jpg",
   },
   {
     title: "Data Centers",
-    description:
-      "Reliable infrastructure, automation and commissioning for mission-critical data centers.",
+    image: "/industries/datacenter.jpg",
   },
   {
     title: "Pharmaceutical",
-    description:
-      "Engineering solutions supporting GMP compliance, cleanrooms and critical operations.",
-  },
-  {
-    title: "Manufacturing",
-    description:
-      "Industrial automation and operational excellence for modern manufacturing plants.",
-  },
-  {
-    title: "Electronics",
-    description:
-      "Facility engineering and digital transformation for electronics production environments.",
-  },
-  {
-    title: "Infrastructure",
-    description:
-      "Integrated engineering solutions supporting large-scale infrastructure projects.",
+    image: "/industries/pharma.jpg",
   },
 ];
 
 export default function Industries() {
   return (
-    <section className="py-24 px-6 bg-slate-50">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white py-32">
 
-        <div className="text-center mb-16">
-          <p className="text-cyan-600 font-semibold uppercase tracking-[3px] mb-4">
+      <div className="max-w-7xl mx-auto px-8">
+
+        <div className="mb-20">
+
+          <p className="uppercase tracking-[5px] text-slate-500 text-sm mb-6">
             Industries
           </p>
 
-          <h2 className="text-5xl font-bold text-slate-900">
-            Industries We Serve
+          <h2 className="text-5xl md:text-6xl font-light text-slate-900">
+            Industries
+            <br />
+            We Serve
           </h2>
 
-          <p className="mt-6 text-slate-600 max-w-3xl mx-auto">
-            Delivering engineering excellence across global mission-critical industries.
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-12">
 
           {industries.map((industry) => (
             <div
               key={industry.title}
-              className="bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:-translate-y-2 transition duration-300"
+              className="group relative overflow-hidden"
             >
-              <div className="w-16 h-16 rounded-2xl bg-cyan-100 flex items-center justify-center text-cyan-600 text-2xl font-bold mb-6">
-                {industry.title.charAt(0)}
+
+              <div className="relative h-[500px]">
+
+                <Image
+                  src={industry.image}
+                  alt={industry.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-700"
+                />
+
+                <div className="absolute inset-0 bg-black/40" />
+
+                <div className="absolute bottom-12 left-12">
+
+                  <h3 className="text-white text-5xl md:text-6xl font-light">
+                    {industry.title}
+                  </h3>
+
+                </div>
+
               </div>
 
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                {industry.title}
-              </h3>
-
-              <p className="text-slate-600 leading-relaxed">
-                {industry.description}
-              </p>
-
-              <div className="mt-6 text-cyan-600 font-semibold">
-                Explore Industry →
-              </div>
             </div>
           ))}
 
         </div>
 
       </div>
+
     </section>
   );
 }
